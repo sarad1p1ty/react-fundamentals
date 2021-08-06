@@ -20,6 +20,15 @@
     // element.className = 'container' // 💰 in React, this is also called the "className" prop
     // // This is similar to ReactDOM.render
     // rootElement.append(element)
+    const words = [{id: '0-1', children: 'Hello '}, {id: '0-2', children: 'World!'}];
+    const elementType = 'span';
+    let elements = [];
+    for (let i in words) {
+      let elementProps = words[i];
+      let reactElement = React.createElement(elementType, elementProps);
+      elements.push(reactElement);
+    }
+    ReactDOM.render(React.createElement(elementType, {children: elements}), rootElement);
 
     // 🐨 Please re-implement the regular document.createElement code above
     // with these React API calls
