@@ -11,26 +11,18 @@ function ErrorMessage(error) {
 function UsernameForm({onSubmitUsername}) {
   // 🐨 add a submit event handler here (`handleSubmit`).
   // 💰 Make sure to accept the `event` as an argument and call
-  const inputEl = React.useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
-    let username = inputEl.current.value;
+    let username = e.target.username.value;
     onSubmitUsername(username);
   }
-  
-  const [isValid, setValidity] = React.useState(false)
+ 
   const [error, setError] = React.useState('')
   
   const handleChange = (event) => {
       const inputValue = event.target.value;
-      setValidity(inputValue === inputValue.toLowerCase());
+      const isValid = (inputValue === inputValue.toLowerCase());
       setError(isValid ? null : 'Username must be lower case')
-      console.log(inputValue)
-      console.log(isValid)
-      console.error(error)
-    //   if (error) {
-    //       return <errorMessage error={error} />
-    //   }
   }
 
   // `event.preventDefault()` to prevent the default behavior of form submit
