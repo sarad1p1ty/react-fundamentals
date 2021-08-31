@@ -13,7 +13,7 @@ function UsernameForm({onSubmitUsername}) {
   // 💰 Make sure to accept the `event` as an argument and call
   const handleSubmit = (e) => {
     e.preventDefault();
-    let username = e.target.username.value;
+    let username = e.target.elements.username.value;
     onSubmitUsername(username);
   }
  
@@ -39,10 +39,10 @@ function UsernameForm({onSubmitUsername}) {
   // 🐨 make sure to associate the label to the input.
   // to do so, set the value of 'htmlFor' prop of the label to the id of input
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} autocomplete="off">
       <div>
         <label htmlFor="username">Username:</label>
-        <input onChange={handleChange} ref={inputEl} id="username" type="text" />
+        <input onChange={handleChange}  id="username" type="text" />
               {!!error && ErrorMessage(error)}
       </div>
       <button type="submit" disabled={!!error} >Submit</button>
