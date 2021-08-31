@@ -13,7 +13,12 @@ function UsernameForm({onSubmitUsername}) {
     onSubmitUsername(username);
   }
  
- 
+  const [inputValue, setValue] = React.useState(null)
+  
+  const handleChange = (event) => {
+      setValue(event.target.value.toLowerCase());
+  }
+
   // `event.preventDefault()` to prevent the default behavior of form submit
   // events (which refreshes the page).
   // 📜 https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
@@ -31,7 +36,7 @@ function UsernameForm({onSubmitUsername}) {
     <form onSubmit={handleSubmit} autocomplete="off">
       <div>
         <label htmlFor="username">Username:</label>
-        <input id="username" type="text" />
+        <input onChange={handleChange} value={inputValue} id="username" type="text" />
       </div>
       <button type="submit">Submit</button>
     </form>
